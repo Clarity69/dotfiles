@@ -12,6 +12,9 @@ A dynamic, automated desktop environment built on **Hyprland**. This setup utili
 - **Automated Workflow**: Single script to change wallpapers and update all application themes.
 - **Modular Layouts**: Waybar switcher for different desktop modes.
 
+## Overview
+<img src="assets/demopic.png" alt="Alt text">
+
 ## 🛠️ Tech Stack
 | Component | Tool |
 | :--- | :--- |
