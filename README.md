@@ -32,7 +32,7 @@ A dynamic, automated desktop environment built on **Hyprland**. This setup utili
 Clone the repository and run the installer script to symlink the configurations:
 
 ```bash
-git clone [https://github.com/YOUR_USERNAME/dotfiles.git](https://github.com/YOUR_USERNAME/dotfiles.git)
+git clone [https://github.com/Clarity69/dotfiles.git](https://github.com/Clarity69/dotfiles.git)
 cd dotfiles
 chmod +x install.sh
 ./install.sh
