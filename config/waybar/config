@@ -1,0 +1,136 @@
+{
+  "position": "top",
+
+  "modules-left": [
+    "custom/power",
+    "battery",
+    "clock",
+    "hyprland/workspaces"
+  ],
+  "modules-center":[],
+  "modules-right":[
+    "pulseaudio",
+    "network",
+    "tray",	
+    "custom/notification"
+  ],
+
+  "clock": {
+            "format": "{:%I:%M %p}",
+            "rotate": 0,
+            "format-alt": "{  %d·%m·%y}",
+            "tooltip-format": "<span>{calendar}</span>",
+            "calendar": {
+                    "mode": "month",
+                    "format": {
+                        "months": "<span color='#cba6f7'><b>{}</b></span>",
+                        "days": "<span color='#cdd6f4'><b>{}</b></span>",
+                        "weekdays": "<span color='#89b4fa'><b>{}</b></span>",
+                        "today": "<span color='#663cf4'><b>{}</b></span>"
+                }
+            }
+    },
+
+"hyprland/workspaces": {
+	"format": "{icon}",
+	"format-icons": {
+		"1": "",
+		"2": "",
+		"3": "",
+		"4": "",
+		"5": "",
+		"active": "",
+		"default": ""
+	},
+       "persistent-workspaces": {
+             "*": 5, 
+             "HDMI-A-1": 3
+       }
+},
+
+"pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": {
+        "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+        "alsa_output.pci-0000_00_1f.3.anal#cba6f7og-stereo-muted": "",
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "phone-muted": "",
+        "portable": "",
+        "car": "",
+        "default": ["", ""]
+    },
+    "scroll-step": 1,
+    "on-click": "pavucontrol",
+    "ignored-sinks": ["Easy Effects Sink"]
+},
+
+"network": {
+    "on-click": "bash ~/.config/rofi/scripts/rofi-wifi-menu.sh",
+    "interface": "wlan0",
+    "format": "",
+    "format-wifi": "{essid} 󰤨",
+    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+    "format-disconnected": "",
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+},
+  "custom/notification": {
+    "tooltip": true,
+    "format": "<span size='16pt'>{icon}</span>",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂜",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰪓",
+      "inhibited-notification": "󰂛",
+      "inhibited-none": "󰪑",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰪑"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+
+  "battery": {
+    "bat": "BAT0",
+    "interval": 60,
+    "states": {
+        "warning": 30,
+        "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-icons": ["", "", "", "", ""],
+    "max-length": 25
+},
+  "custom/power":{
+    "format": "⏻",
+    "on-click": "wlogout"
+},
+  "tray":{
+    "icon-size": 15,
+    "spacing": 5
+},
+"mpris": {
+	"format": "{player_icon} {title} | {artist}",
+	"format-paused": "{status_icon} <i>{artist}</i>",
+	"player-icons": {
+		"default": "▶",
+		"mpv": "🎵"
+	},
+	"status-icons": {
+		"paused": "⏸"
+	},
+}
+}

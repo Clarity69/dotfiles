@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Cek file
+if [[ -z "$1" ]]; then
+    echo "Gunakan: wallset-backend /path/ke/gambar.jpg"
+    exit 1
+fi
+
+IMG="$1"
+
+# 1. Set Wallpaper
+swww img "$IMG" --transition-type center --transition-step 90 --transition-fps 60
+
+# 2. Jalankan Pywal
+wal -i "$IMG" -n -q
+
+# --- VARIABEL PATH ---
+VSCODIUM_CONFIG="$HOME/.config/VSCodium/User/settings.json"
+VENCORD_DEST="$HOME/.config/Vencord/themes/midnight.theme.css"
+PYWAL_CACHE_VENCORD="$HOME/.cache/wal/vencord"
+
+# 3. Refresh Kitty
+if pgrep -x kitty > /dev/null; then
+    kitty @ set-colors -a -c ~/.cache/wal/colors-kitty.conf
+fi
+
+#Refresh UI Lainnya
+(killall waybar && waybar) &
+swaync-client -rs 2>/dev/null
+
+# 4. Update Vencord (Midnight)
+# Pastikan menggunakan variabel yang benar: PYWAL_CACHE_VENCORD
+if [ -f "$PYWAL_CACHE_VENCORD" ]; then
+    cat "$PYWAL_CACHE_VENCORD" > "$VENCORD_DEST"
+    echo "✅ Discord Midnight theme updated!"
+else
+    echo "❌ Pywal cache 'vencord' not found!"
+fi
+
+# 5. Refresh VSCodium
+if [ -f "$HOME/.cache/wal/vscodium-colors.json" ]; then
+    touch "$VSCODIUM_CONFIG"
+fi
+
+# 6. Spicetify
+if command -v spicetify &> /dev/null; then
+    (spicetify apply -q > /dev/null 2>&1 &)
+fi
+
+notify-send "Theme Switched" "All apps updated"

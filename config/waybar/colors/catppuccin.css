@@ -1,0 +1,37 @@
+/* =========================
+  CATPPUCCIN MOCHA
+   ========================= */
+
+@define-color ctp-base        #1e1e2e;
+@define-color ctp-mantle      #181825;
+@define-color ctp-crust       #11111b;
+
+@define-color ctp-surface0    #313244;
+@define-color ctp-surface1    #45475a;
+@define-color ctp-surface2    #585b70;
+
+@define-color ctp-text        #cdd6f4;
+@define-color ctp-subtext0    #a6adc8;
+@define-color ctp-subtext1    #bac2de;
+
+@define-color ctp-mauve       #cba6f7;
+@define-color ctp-blue        #89b4fa;
+@define-color ctp-green       #a6e3a1;
+@define-color ctp-yellow     #f9e2af;
+@define-color ctp-red         #f38ba8;
+@define-color power           #ff0000;
+
+/* =========================
+   SEMANTIC COLORS
+   ========================= */
+
+@define-color bg-main     @ctp-crust;
+@define-color bg-island   @ctp-base;
+@define-color bg-hover    @ctp-surface0;
+
+@define-color fg-main     @ctp-text;
+@define-color fg-muted    @ctp-subtext0;
+
+@define-color accent      @ctp-mauve;
+@define-color warning     @ctp-yellow;
+@define-color critical    @ctp-red;

@@ -1,0 +1,10 @@
+configuration {
+    modi: "drun,run";
+    show-icons: false;
+    icon-theme: "Papirus";
+    drun-display-format: "{name}";
+    font: "JetBrainsMono Nerd Font 12";
+    display-drun: "";
+}
+
+@theme "catppuccin"

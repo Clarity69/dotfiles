@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Folder wallpaper
+WALL_DIR="$HOME/Pictures/Wallpaper"
+
+# Masuk ke direktori
+cd "$WALL_DIR" || exit
+
+# Mengatur agar spasi pada nama file tidak merusak list
+IFS=$'\n'
+
+# Membuat list untuk Rofi dengan format: NamaFile\0icon\x1fPathLengkap
+function list_walls() {
+    for i in $(ls *.jpg *.png *.jpeg 2>/dev/null); do
+        echo -en "$i\0icon\x1f$WALL_DIR/$i\n"
+    done
+}
+
+# Jalankan Rofi
+# -show-icons: Mengaktifkan mode ikon
+# -theme-str: Mengatur ukuran ikon agar terlihat seperti preview besar
+selected=$(list_walls | rofi -dmenu -i -p "" \
+    -show-icons \
+    -theme-str 'element { orientation: vertical; padding: 10px; } element-icon { size: 6em; } element-text { horizontal-align: 0.5; } listview { columns: 3; lines: 2; }')
+
+# Jika ada yang dipilih, jalankan backend
+if [ -n "$selected" ]; then
+    ~/.local/bin/wallset-backend "$WALL_DIR/$selected"
+fi

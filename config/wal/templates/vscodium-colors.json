@@ -1,0 +1,111 @@
+{{
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.statusBar.visible": false,
+    "editor.minimap.enabled": false,
+    "breadcrumbs.enabled": false,
+    "editor.stickyScroll.enabled": false,
+    "window.titleBarStyle": "native",
+    "window.menuBarVisibility": "toggle",
+    "window.customMenuBarAltFocus": false,
+    "window.enableMenuBarMnemonics": false,
+    "window.customTitleBarVisibility": "never",
+    "workbench.productIconTheme": "fluent-icons",
+    "editor.fontFamily": "'JetBrains Nerd Font Mono', monospace",
+    "workbench.colorTheme": "Default Dark Modern",
+    "editor.fontLigatures": true,
+    "files.autoSave": "afterDelay",
+    "editor.cursorStyle": "block",
+    "editor.smoothScrolling": true,
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.cursorBlinking": "smooth",
+    "material-icon-theme.hidesExplorerArrows": true,
+    "terminal.integrated.profiles.linux": {{
+        "bash": {{ "path": "bash", "icon": "terminal-bash" }},
+        "zsh": {{ "path": "zsh" }},
+        "fish": {{ "path": "fish" }},
+        "tmux": {{ "path": "tmux", "icon": "terminal-tmux" }},
+        "pwsh": {{ "path": "pwsh", "icon": "terminal-powershell" }},
+        "bash (2)": {{ "path": "/usr/bin/bash" }}
+    }},
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "workbench.activityBar.location": "hidden",
+    "workbench.list.smoothScrolling": true,
+    "workbench.panel.showLabels": false,
+    "editor.semanticHighlighting.enabled": false,
+
+    "editor.semanticTokenColorCustomizations": {{
+        "[Default Dark Modern]": {{
+            "enabled": false
+        }}
+    }},
+
+    "workbench.colorCustomizations": {{
+        "[Default Dark Modern]": {{
+            "editor.background": "{background}",
+            "sideBar.background": "{background}",
+            "sideBar.border": "{background}",
+            "editorGroup.border": "{background}",
+            "editor.foreground": "#e0e0e0",
+            "foreground": "#e0e0e0",
+            "editorLineNumber.foreground": "{color8}",
+            "editorLineNumber.activeForeground": "{color4}",
+            "editorGroupHeader.tabsBackground": "{background}",
+            "tab.activeBackground": "{background}",
+            "tab.activeForeground": "#ffffff",
+            "tab.inactiveBackground": "{background}",
+            "tab.inactiveForeground": "#808080",
+            "tab.border": "{background}",
+            "tab.activeBorder": "{color4}",
+            "panel.background": "{background}",
+            "panel.border": "{background}",
+            "panelTitle.activeForeground": "{color4}",
+            "panelTitle.inactiveForeground": "#808080",
+            "terminal.background": "{background}",
+            "terminal.foreground": "{color15}",
+            "terminal.ansiBlack": "{color0}",
+            "terminal.ansiRed": "{color1}",
+            "terminal.ansiGreen": "{color2}",
+            "terminal.ansiYellow": "{color3}",
+            "terminal.ansiBlue": "{color4}",
+            "terminal.ansiMagenta": "{color5}",
+            "terminal.ansiCyan": "{color6}",
+            "terminal.ansiWhite": "{color7}",
+            "terminal.ansiBrightBlack": "{color8}",
+            "terminal.ansiBrightRed": "{color9}",
+            "terminal.ansiBrightGreen": "{color10}",
+            "terminal.ansiBrightYellow": "{color11}",
+            "terminal.ansiBrightBlue": "{color12}",
+            "terminal.ansiBrightMagenta": "{color13}",
+            "terminal.ansiBrightCyan": "{color14}",
+            "terminal.ansiBrightWhite": "{color15}"
+        }}
+    }},
+
+    "editor.tokenColorCustomizations": {{
+        "[Default Dark Modern]": {{
+            "textMateRules": [
+                {{
+                    "scope": ["source", "variable", "punctuation", "keyword.operator", "meta.brace"],
+                    "settings": {{ "foreground": "#e0e0e0" }}
+                }},
+                {{
+                    "scope": ["keyword", "storage.type"],
+                    "settings": {{ "foreground": "{color5}", "fontStyle": "bold" }}
+                }},
+                {{
+                    "scope": ["entity.name.function", "support.function"],
+                    "settings": {{ "foreground": "{color6}" }}
+                }},
+                {{
+                    "name": "Force Wallpaper String Color",
+                    "scope": ["string", "string.quoted", "string.quoted.double", "string.quoted.single", "punctuation.definition.string"],
+                    "settings": {{ "foreground": "{color2}" }}
+                }},
+                {{
+                    "scope": ["comment"],
+                    "settings": {{ "foreground": "{color8}", "fontStyle": "italic" }}
+                }}
+            ]
+        }}
+    }}
+}}

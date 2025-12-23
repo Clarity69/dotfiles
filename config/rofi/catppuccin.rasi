@@ -1,0 +1,77 @@
+/* Import warna dinamis dari Pywal */
+@import "~/.cache/wal/colors-rofi-dark"
+
+* {
+    /* Mapping variabel Pywal ke nama yang kamu gunakan sebelumnya */
+    bg:     @background;
+    fg:     @foreground;
+    accent: @color4;
+    mauve:  @color6;
+
+    background-color: transparent;
+    text-color: @fg;
+    font: "JetBrainsMono Nerd Font Propo 12";
+}
+
+window {
+    background-color: @bg;
+    border: 2px;             /* Menambahkan border agar aksen warna terlihat */
+    border-color: @accent;   /* Border mengikuti warna wallpaper */
+    border-radius: 12px;
+    padding: 20px;
+    width: 500px;
+    height: 300px;
+    /* Blur biasanya diatur di compositor (Hyprland), bukan di rasi */
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+    spacing: 5px;
+}
+
+inputbar {
+    background-color: rgba(255,255,255,0.0); /* Sedikit transparan */
+    border-radius: 8px;
+    padding: 4px 0px;
+}
+
+prompt {
+    enabled: false;
+    padding: 8px;
+    text-color: @accent;
+}
+textbox-prompt-colon {
+    enabled: false;
+    str: "";
+}
+
+entry {
+    padding: 10px 14px;
+    border-radius: 8px;
+    text-color: @fg;
+}
+
+element {
+    background-color: transparent;
+    padding: 5px;
+}
+
+element-text {
+    text-color: @fg;
+}
+
+element-icon {
+    size: 16px;
+    padding: 0 10px 0 0;
+}
+
+element selected {
+    /* Menggunakan warna aksen wallpaper dengan sedikit transparansi */
+    background-color: @accent; 
+    border-radius: 6px;
+}
+
+element selected element-text {
+    text-color: @bg; /* Teks jadi gelap saat dipilih agar kontras */
+    font-weight: bold;
+}
