@@ -1,0 +1,219 @@
+/* ========================= */
+/* PYWAL IMPORT */
+/* ========================= */
+@import "../../.cache/wal/colors-waybar.css";
+
+/* ──────────────────────────────────────────────────────────────────────────
+   °˖* ૮(  • ᴗ ｡)っ🍸  pewdiepie/archdaemon/dionysh  shhheersh
+   Waybar CSS styling (Pywal Version)
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* === Base Waybar Styling ================================================= */
+
+waybar * {
+  border: 4px;
+  border-radius: 4px;
+  min-height: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 14px;
+}
+
+#waybar {
+  background-color: alpha(@background, 0.95);
+  border-radius: 2px;
+}
+
+window#waybar {
+  background: @background;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  color: @foreground;
+  border: 3px solid @color4;
+  border-left: 3px solid @color6;
+  border-right: 3px solid @color6;
+}
+
+
+/* === Workspaces ========================================================== */
+
+#workspaces {
+  background-color: transparent;
+  padding-left: 10px; /* Diubah dari 40px agar lebih center */
+}
+
+#workspaces button {
+  all: initial;
+  min-width: 0;
+  box-shadow: inherit;
+  padding: 6px 10px; /* Padding diseimbangkan */
+  margin: 6px 3px;
+  border-radius: 4px;
+  background-color: alpha(@foreground, 0.1);
+  color: @color4;
+}
+
+#workspaces button.active {
+  color: @background;
+  background-color: @color4;
+}
+
+#workspaces button:hover {
+  color: @background;
+  background-color: @color4;
+}
+
+
+/* === Default Module Container Styling ==================================== */
+
+#custom-microphone,
+#bluetooth,
+#custom-bluetooth,
+#custom-brightness,
+#custom-volume,
+#custom-battery,
+#custom-power,
+#custom-asus-profile,
+#network,
+#battery,
+#pulseaudio,
+#backlight,
+#custom-vpn,
+#clock,
+#tray {
+  padding: 6px 12px;
+  margin: 6px 6px;
+  background-color: alpha(@foreground, 0.05);
+  border: 2px solid @color4;
+  border-radius: 2px;
+  color: @foreground;
+}
+
+
+/* === Audio ============================================================== */
+
+#pulseaudio.muted {
+  background-color: @color1;
+  color: @background;
+  min-width: 50px;
+}
+
+
+/* === Bluetooth =========================================================== */
+
+#bluetooth.disabled {
+  color: @color3;
+}
+
+#custom-bluetooth {
+  color: @color4;
+}
+
+
+/* === Network ============================================================= */
+
+#network.disconnected {
+  background-color: @color1;
+  color: @background;
+}
+
+
+/* === Clock =============================================================== */
+
+#clock {
+  font-weight: bold;
+  font-size: 12px;
+  color: @color4;
+}
+
+
+/* === Asus Profile ======================================================== */
+
+#custom-asus-profile {
+  font-weight: bold;
+  font-size: 12px;
+  color: @color3;
+}
+
+
+/* === VPN ================================================================= */
+
+#custom-vpn {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+
+/* === Battery ============================================================= */
+
+#custom-battery {
+  border-radius: 2px;
+  font-weight: normal;
+}
+
+#custom-battery .battery-critical {
+  background-color: @color1;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+#custom-battery .battery-warning {
+  background-color: @color3;
+  color: @background;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+
+/* === Brightness ========================================================== */
+
+#backlight {
+  background-color: alpha(@foreground, 0.1);
+}
+
+
+/* === Tray ================================================================ */
+
+#tray {
+  padding: 4px 8px;
+  background-color: alpha(@color0, 0.5);
+}
+
+
+/* === Hover Effects ======================================================= */
+
+#custom-microphone:hover,
+#custom-volume:hover,
+#pulseaudio:hover,
+#network:hover,
+#custom-vpn:hover,
+#bluetooth:hover,
+#custom-bluetooth:hover,
+#custom-power:hover,
+#custom-asus-profile:hover,
+#custom-battery:hover,
+#battery:hover,
+#backlight:hover,
+#custom-brightness:hover,
+#clock:hover,
+#tray:hover {
+  background-color: @color4;
+  border: 2px solid @color6;
+  color: @background;
+  transition: all 0.2s ease-in-out;
+}
+
+
+/* === Tooltips ============================================================ */
+
+tooltip {
+  color: @color6;
+  background-color: @background;
+  border: 1px solid @color6;
+  font-weight: bold;
+}
+
+tooltip label {
+  color: @foreground;
+}

@@ -37,6 +37,8 @@ tooltip label {
     margin-left: 5px;
     border-radius: 18px;
     border: 0px solid @color4; /* Gunakan salah satu warna aksen pywal */
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 /* Workspace buttons */
@@ -47,6 +49,8 @@ tooltip label {
     color: @color4; /* Warna aksen utama */
     background: transparent;
     transition: all 0.25s ease;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 /* Active workspace */
@@ -54,6 +58,8 @@ tooltip label {
     background: @color4;
     color: @color4; /* Agar teks kontras dengan background baru */
     min-width: 25px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 /* Hover */
@@ -61,6 +67,8 @@ tooltip label {
     background: @color4;
     color: @background;
     min-width: 35px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 /* Urgent */
