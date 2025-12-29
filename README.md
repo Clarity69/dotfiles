@@ -12,7 +12,7 @@ A dynamic, automated desktop environment built on **Hyprland**. This setup utili
 - **Automated Workflow**: Single script to change wallpapers and update all application themes.
 
 ## Overview
-<img src="assets/demopic.png" alt="Alt text">
+<img src="assets/newewst.png" alt="Alt text">
 
 ## 🛠️ Tech Stack
 | Component | Tool |
