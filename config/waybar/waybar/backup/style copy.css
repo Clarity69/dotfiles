@@ -1,0 +1,124 @@
+/* Mengambil warna dari Pywal */
+@import "../../.cache/wal/colors-waybar.css";
+
+/* CATATAN: Pywal menyediakan variabel default seperti:
+   @background, @foreground, @cursor
+   @color0 s/d @color15
+*/
+
+* {
+    font-family: "JetBrainsMono Nerd Font Propo", monospace;
+    font-size: 13px;
+    border: none;
+    padding: 2px;
+}
+
+/* Waybar base */
+window#waybar {
+    background: transparent;
+}
+
+/* Tooltip */
+tooltip {
+    background: @background; /* Dinamis dari wallpaper */
+    border: 1px solid @color4;
+    border-radius: 12px;
+}
+
+tooltip label {
+    color: @foreground;
+    padding: 6px;
+}
+
+/* Workspaces container */
+#workspaces {
+    background: @background;
+    padding: 5px 6px;
+    margin-left: 5px;
+    border-radius: 18px;
+    border: 0px solid @color4; /* Gunakan salah satu warna aksen pywal */
+}
+
+/* Workspace buttons */
+#workspaces button {
+    padding: 0px 5px;
+    margin: 0 3px;
+    border-radius: 999px;
+    color: @color4; /* Warna aksen utama */
+    background: transparent;
+    transition: all 0.25s ease;
+}
+
+/* Active workspace */
+#workspaces button.active {
+    background: @color4;
+    color: @color4; /* Agar teks kontras dengan background baru */
+    min-width: 25px;
+}
+
+/* Hover */
+#workspaces button:hover {
+    background: @color4;
+    color: @background;
+    min-width: 35px;
+}
+
+/* Urgent */
+#workspaces button.urgent {
+    background: @color1; /* Biasanya warna merah/aksen kuat */
+    color: @background;
+}
+
+/* Module islands */
+#battery,
+#pulseaudio,
+#network,
+#clock,
+#custom-notification {
+    background: @background;
+    color: @color4;
+    padding: 4px 15px;
+    margin-left: 5px;
+    border-radius: 999px;
+    border: 0px solid @color4;
+}
+
+/* Kustomisasi warna ikon/modul spesifik agar lebih variatif */
+#network {
+    color: @color4;
+}
+
+#battery {
+    color: @color3; /* Gunakan warna ke-3 dari palet (biasanya kuning/hijau) */
+}
+
+#clock {
+    color: @color5; /* Gunakan warna ke-5 dari palet (biasanya ungu/biru) */
+}
+
+#custom-power {
+    color: @color1;
+    background-color: @background;
+    min-width: 50px;
+    border-radius: 999px;
+    border: 0px solid @color1;
+}
+
+#tray {
+    background-color: @background;
+    color: @foreground;
+    border-radius: 18px;
+    min-width: 70px;
+    margin-left: 5px;
+    border: 0px solid @color4;
+}
+
+/* #mpris{
+    background: @background;
+    color: @color4;
+    padding: 4px 15px;
+    margin-left: 5px;
+    border-radius: 999px;
+    border: 0px solid @color4;
+    min-width: 80px;
+} */
