@@ -1,7 +1,8 @@
 {
-  "include": "~/.config/waybar/modules",
-  "position": "top",
   "layer": "top",
+  "position": "top",
+  "exclusive": true,
+  "passthrough": false,
 
   "modules-left": [
     "group/clock",
@@ -16,46 +17,18 @@
     "group/tray"
   ],
 
+  /* --- GROUPS CONFIGURATION --- */
 
-  "group/notification": {
-    "orientation": "inherit",
-    "modules": ["custom/notification"]
-  },
   "group/clock": {
     "modules": ["clock"]
   },
+
   "group/battery": {
     "modules": ["battery"]
   },
-  "group/network": {
-    "modules": ["network"]
-  },
-  "group/pulseaudio": {
-    "modules": ["pulseaudio","pulseaudio#microphone"]
-  },
-  "group/tray": {
-    "modules": ["tray"]
-  },
+
   "group/workspaces": {
-    "modules":["hyprland/workspaces#kanji"]
-  },
-
-  "clock": {
-    "format": "󱑊 {:%H:%M}",
-    "format-alt": "󰃭 {:%a, %d %b}",
-    "tooltip-format": "<big>{:%Y}</big>\n<tt><small>{calendar}</small></tt>"
-  },
-
-  "battery": {
-    "bat": "BAT0",
-    "interval": 60,
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{capacity}% {icon}",
-    "format-icons": ["", "", "", "", ""],
-    "max-length": 25
+    "modules": ["hyprland/workspaces#kanji"]
   },
 
   "group/network": {
@@ -65,10 +38,74 @@
       "children-class": "network-text",
       "transition-left-to-right": false
     },
-    "modules": [
-      "network",
-      "network#ssid"
-    ]
+    "modules": ["network", "network#ssid"]
+  },
+
+  "group/audio": {
+    "orientation": "horizontal",
+    "modules": ["pulseaudio", "pulseaudio#microphone"]
+  },
+
+  "group/notification": {
+    "orientation": "inherit",
+    "modules": ["custom/notification"]
+  },
+
+  "group/tray": {
+    "modules": ["tray"]
+  },
+
+  /* --- MODULES DETAIL --- */
+
+  "hyprland/workspaces#kanji": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    },
+    "format-icons": {
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六",
+      "7": "七",
+      "8": "八",
+      "9": "九",
+      "10": "十"
+    }
+  },
+
+  "clock": {
+    "format": "󱑊 {:%H:%M}",
+    "format-alt": "󰃭 {:%a, %d %b}",
+    "tooltip-format": "<big>{:%Y}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+  "battery": {
+    "full-at": 100,
+    "design-capacity": false,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": "󱘖 {capacity}%",
+    "format-full": "{icon} Full",
+    "format-alt": "{icon} {time}",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-time": "{H}h {M}min",
+    "tooltip": true,
+    "tooltip-format": "{timeTo} {power}w",
+    "on-click-right": "wlogout -b 5 -c 10"
   },
 
   "network": {
@@ -87,31 +124,38 @@
     "tooltip": false
   },
 
-    "tray":{
-        "icon-size": 15,
-        "spacing": 8
-    },
-    "pulseaudio": {
+  "pulseaudio": {
     "format": "{icon}  {volume}%",
     "format-bluetooth": "{volume}% {icon}",
     "format-muted": "",
     "format-icons": {
-        "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
-        "alsa_output.pci-0000_00_1f.3.anal#cba6f7og-stereo-muted": "",
-        "headphone": "",
-        "hands-free": "",
-        "headset": "",
-        "phone": "",
-        "phone-muted": "",
-        "portable": "",
-        "car": "",
-        "default": ["", ""]
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "phone-muted": "",
+      "portable": "",
+      "car": "",
+      "default": ["", ""]
     },
     "scroll-step": 1,
     "on-click": "pavucontrol",
     "ignored-sinks": ["Easy Effects Sink"]
-    },
-    "custom/notification": {
+  },
+
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": " Muted",
+    "on-click": "~/.config/hypr/scripts/volume_control.sh --toggle-mic",
+    "on-click-right": "pavucontrol -t 4",
+    "on-scroll-up": "~/.config/hypr/scripts/volume_control.sh --mic-inc",
+    "on-scroll-down": "~/.config/hypr/scripts/volume_control.sh --mic-dec",
+    "tooltip-format": "{source_desc} | {source_volume}%",
+    "scroll-step": 5
+  },
+
+  "custom/notification": {
     "tooltip": false,
     "format": "{icon}",
     "format-icons": {
@@ -130,16 +174,10 @@
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
-    },
-    "pulseaudio#microphone": {
-    "format": "{format_source}",
-    "format-source": " {volume}%",
-    "format-source-muted": " Muted",
-    "on-click": "~/.config/hypr/scripts/volume_control.sh --toggle-mic",
-    "on-click-right": "pavucontrol -t 4",
-    "on-scroll-up": "~/.config/hypr/scripts/volume_control.sh --mic-inc",
-    "on-scroll-down": "~/.config/hypr/scripts/volume_control.sh --mic-dec",
-    "tooltip-format": "{source_desc} | {source_volume}%",
-    "scroll-step": 5
-    }
+  },
+
+  "tray": {
+    "icon-size": 15,
+    "spacing": 8
+  }
 }
