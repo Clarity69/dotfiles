@@ -2,7 +2,7 @@
   "$schema": "/etc/xdg/swaync/configSchema.json",
   "positionX": "right",
   "positionY": "top",
-	"cssPriority": "user",
+  "cssPriority": "user",
 
   "control-center-width": 380,
   "control-center-height": 660, 
@@ -12,7 +12,7 @@
   "control-center-margin-left": 0,
 
   "notification-window-width": 400,
-  "notification-icon-size": 48,
+  "notification-icon-size": 32,
   "notification-body-image-height": 160,
   "notification-body-image-width": 200,
 
@@ -41,13 +41,13 @@
     }
   },
   "widgets": [
-    "label",
     "buttons-grid",
+    "backlight",
+    "volume",
     "mpris",
     "title",
     "dnd",
-    "notifications",
-    "backlight"
+    "notifications"
   ],
   "widget-config": {
     "title": {
@@ -58,46 +58,61 @@
     "dnd": {
       "text": "Do not disturb"
     },
-    "label": {
-      "max-lines": 1,
-      "text": " "
+    "notifications": {
+      "text": "",
+      "clear-all-button": true,
+      "button-text": " Clear All "
     },
     "mpris": {
-      "image-size": 96,
+      "image-size": 80,
       "image-radius": 12
     },
     "volume": {
-      "label": "󰕾",
-        "show-per-app": true
+      "label": "󰓃"
     },
     "backlight":{
-      "label": "",
+      "label": "󰃚",
       "device": "intel_backlight",
       "min": 10
     },
-    "buttons-grid": {
+   "buttons-grid": {
       "actions": [
         {
           "label": " ",
-          "command": "amixer set Master toggle"
+          "command": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         },
         {
           "label": "",
-          "command": "amixer set Capture toggle"
+          "command": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
         },
         {
-          "label": " ",
-          "command": "foot -e nmtui"
+          "label": "󰤨",
+          "command": "bash ~/.config/rofi/scripts/rofi-wifi-menu.sh"
         },
         {
           "label": "󰂯",
-          "command": "blueman-manager"
+          "command": "bash ~/.config/rofi/scripts/rofi-bluetooth.sh"
+        },
+        {
+          "label": "󱓡",
+          "command": "bash ~/.config/waybar/scripts/waybar-rofi.sh"
         },
         {
           "label": "󰏘",
-          "command": "nwg-look"
+          "command": "sh -c ~/.local/bin/wallet"
+        },
+        {
+          "label": "",
+          "command": "powerprofilesctl set performance && notify-send 'Power Mode' 'Performance Enabled' -i HighPerformance -a 'System'"
+        },
+        {
+          "label": " ",
+          "command": "powerprofilesctl set balanced && notify-send 'Power Mode' 'Balanced Enabled' -i Balanced -a 'System'"
+        },
+        {
+          "label": " ",
+          "command": "powerprofilesctl set power-saver && notify-send 'Power Mode' 'Power Saver Enabled' -i low-battery -a 'System'"
         }
-        
       ]
     }
   }

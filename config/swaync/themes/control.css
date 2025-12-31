@@ -9,7 +9,7 @@
 
   all: unset;
   font-size: 14px;
-  font-family: "JetBrains Mono Nerd Font 10";
+  font-family: "GeistMono Nerd Font 10";
   transition: 200ms;
 
 }
@@ -22,7 +22,7 @@
 /* CONTROL CENTER ------------------------------------------------------------------------ */
 
 .control-center {
-  background: alpha(@background, .55);
+  background: alpha(@background, .98);
   border-radius: 24px;
   border: 1px solid @selected;
   box-shadow: 0 0 10px 0 rgba(0,0,0,.6);
@@ -130,7 +130,7 @@ progressbar {
 
   /* Notification clear button */
 .widget-title {
-  font-size: 1.2em;
+  font-size: 1em;
   margin: 6px;
 }
 
@@ -199,55 +199,104 @@ progressbar {
   background: @hover;
 }
 
-
-  /* Music player */
+/* =========================
+   MPRIS (Media Player) - Fixed Left Cover
+   ========================= */
 .widget-mpris {
-    background: @background-alt;
-    border-radius: 16px;
-    color: @text;
-    margin:  20px 6px;
+  background: transparent;
+  color: @text;
+  margin: 4px 0;
+  padding: 12px;
 }
 
-  /* NOTE: Background need *opacity 1* otherwise will turn into the album art blurred  */
 .widget-mpris-player {
-    background-color: @background-sec;
-    border-radius: 22px;
-    padding: 6px 14px;
-    margin: 6px;
+  background: alpha(@background, 0.5); /* Semi-transparent minimal background */
+  border: 1px solid alpha(@text, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: none; /* Menghilangkan shadow agar lebih flat/minimal */
 }
 
-.widget-mpris > box > button {
-  color: @text;
-  border-radius: 20px;
-}
- 
-.widget-mpris button {
-  color: alpha(@text, .6);
-}
-
-.widget-mpris button:hover {
-  color: @text;
+/* Menghilangkan background blur yang ramai agar lebih clean */
+.widget-mpris .widget-mpris-player .mpris-background {
+  opacity: 0;
 }
 
 .widget-mpris-album-art {
-  border-radius: 16px;
-}
- 
-.widget-mpris-title {
-    font-weight: 700;
-    font-size: 1rem;
-}
- 
-.widget-mpris-subtitle {
-    font-weight: 500;
-    font-size: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  margin-right: 16px;
+  min-width: 64px;
+  min-height: 64px;
 }
 
-/* Volume */
+.widget-mpris-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: @text;
+  margin-bottom: 2px;
+}
+
+.widget-mpris-subtitle {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: @text;
+  opacity: 0.6; /* Membuat nama artist lebih redup */
+}
+
+/* Tombol Kontrol yang Lebih Simpel */
+.widget-mpris button {
+  color: @text;
+  opacity: 0.8;
+  margin: 8px 4px 0 4px;
+  background: transparent; /* Flat design */
+  border-radius: 8px;
+  transition: all 200ms ease;
+}
+
+.widget-mpris button:hover {
+  background: alpha(@selected, 0.2);
+  color: @selected;
+  transform: none; /* Menghilangkan efek scale agar terasa lebih kaku/minimal */
+}
+/* =========================
+   SLIDERS (Volume & Brightness) - Slim Version
+   ========================= */
+
+.widget-backlight,
 .widget-volume {
-  background: @background-sec;
-  color: @background;
-  padding: 4px;
-  margin: 6px;
-  border-radius: 6px;
+ background: @bg-island;
+  margin: 8px;
+  padding: 8px;
+  border-radius: 14px;
+}
+
+/* Ukuran Icon di samping slider */
+.widget-backlight > label,
+.widget-volume > label {
+  font-size: 1rem; /* Ikon lebih kecil */
+  color: @selected;
+  margin-right: 10px;
+}
+
+/* Jalur Slider (Trough) - Dibuat Tipis */
+scale trough {
+  background: @color0;
+  border-radius: 999px;
+}
+
+/* Isi Slider (Highlight) - Sama tipisnya dengan trough */
+scale highlight {
+ background: @selected;
+  border-radius: 999px;
+}
+
+/* Bulatan Slider (Slider/Knob) - Dibuat Minimalis */
+scale slider {
+  background: @text;
+  border-radius: 999px;
+  min-height: 10px; /* Ukuran bulatan dikecilkan */
+  min-width: 10px;
+  margin: 0px; /* Menyesuaikan posisi bulatan agar center di garis tipis */
+  box-shadow: none;
 }
