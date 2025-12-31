@@ -1,0 +1,66 @@
+{
+  "margin-top": 2,
+  "margin-left": 120,
+  "margin-bottom": 0,
+  "margin-right": 120,
+  "height": 20, // Diperkecil agar lebih minimalis
+  "layer": "top",
+  "position": "top",
+  "spacing": 15,
+  "modules-left": ["custom/launcher", "clock", "clock#date"],
+  "modules-center": ["hyprland/workspaces"], // Diganti dari wlr/workspaces (standar Hyprland baru)
+  "modules-right": ["pulseaudio", "network", "battery", "custom/powermenu"],
+
+  "hyprland/workspaces": {
+      "disable-scroll": true,
+      "all-outputs": true,
+      "on-click": "activate",
+      "format": "{name}"
+  },
+  
+  "custom/launcher": {
+      "interval": "once",
+      "format": "󰣇",
+      /* Diubah ke Rofi agar sinkron dengan bahasan kita sebelumnya */
+      "on-click": "pkill rofi || rofi -show drun", 
+      "tooltip": false
+    },
+
+  "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-muted": "󰝟 muted",
+      "format-icons": {
+          "default": ["", "", ""]
+      },
+      "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+      "on-click-right": "pavucontrol"
+  },
+
+  "network": {
+      "format-wifi": " {essid}",
+      "format-disconnected": "󰤭",
+      "on-click": "nm-connection-editor" 
+  },
+
+  "battery": {
+    "states": { "warning": 30, "critical": 15 },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󱐋 {capacity}%",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+
+  "clock": {
+      "format": "󱑊 {:%H:%M}"
+  },
+
+  "clock#date": {
+    "format": "󰃭 {:%d %b}" // Lebih pendek agar minimalis
+  },
+
+  "custom/powermenu": {
+      "format": "",
+      /* Memastikan path script benar */
+      "on-click": "pkill rofi || sh ~/.config/rofi/scripts/powermenu.sh",
+      "tooltip": false
+    }
+}

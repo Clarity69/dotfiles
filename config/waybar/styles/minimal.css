@@ -8,7 +8,7 @@
 
 * {
     font-family: "JetBrainsMono Nerd Font Propo", monospace;
-    font-size: 13px;
+    font-size: 11px;
     border: none;
     padding: 2px;
 }
@@ -27,7 +27,7 @@ tooltip {
 
 tooltip label {
     color: @foreground;
-    padding: 6px;
+    padding: 2px;
 }
 
 /* Workspaces container */

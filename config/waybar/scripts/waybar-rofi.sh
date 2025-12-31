@@ -6,7 +6,7 @@ LAYOUT_DIR="$BASE/layouts"
 # Ambil nama layout (tanpa .json)
 OPTIONS=$(ls "$LAYOUT_DIR" | sed 's/\.json$//')
 
-CHOSEN=$(echo "$OPTIONS" | rofi -dmenu -p "Waybar Layout")
+CHOSEN=$(echo "$OPTIONS" | rofi -dmenu -p "Layout ")
 
 [[ -z "$CHOSEN" ]] && exit 0
 
