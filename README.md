@@ -14,7 +14,8 @@ A dynamic, automated desktop environment built on **Hyprland**. This setup utili
 ## Overview
 <img src="assets/newest.png" alt="Alt text">
 
-[Watch the video on YouTube](https://youtu.be/D_04XJHg56c)
+<video src="https://github.com/Clarity69/dotfiles/raw/main/video/demo_fixed.mp4" controls="controls" style="max-width: 100%;">
+</video>
 
 ## 🛠️ Tech Stack
 | Component | Tool |
