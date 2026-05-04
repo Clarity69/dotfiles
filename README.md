@@ -14,7 +14,7 @@ A dynamic, automated desktop environment built on **Hyprland**. This setup utili
 ## Overview
 <img src="assets/newest.png" alt="Alt text">
 
-![Video](https://github.com/user-attachments/assets/e1f42f1a-ffb2-4548-b613-da2a67d138e5)
+[Watch the video on YouTube](https://youtu.be/D_04XJHg56c)
 
 ## 🛠️ Tech Stack
 | Component | Tool |
