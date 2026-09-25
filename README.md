@@ -7,7 +7,6 @@ A dynamic, automated desktop environment built on **Hyprland**. This setup utili
 
 ## Key Features
 - **Dynamic Theming**: All UI colors adapt to your wallpaper using Pywal.
-- **Midnight Discord**: Custom SVG icons and Pywal integration for Vencord.
 - **Automated Workflow**: Single script to change wallpapers and update all application themes.
 
 ## Overview
@@ -27,7 +26,7 @@ A dynamic, automated desktop environment built on **Hyprland**. This setup utili
 | **App Launcher** | Rofi |
 | **Notifications** | SwayNC |
 | **Color Engine** | Pywal |
-| **Extensions** | Spicetify, Vencord (Midnight Theme) |
+| **Extensions** | Spicetify |
 
 ## 🚀 Quick Start
 
