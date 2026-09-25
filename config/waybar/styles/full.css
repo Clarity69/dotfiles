@@ -21,7 +21,7 @@ waybar * {
 }
 
 window#waybar {
-  background: transparent; /* Membuat bar terlihat melayang */
+ /* Membuat bar terlihat melayang */
   color: @foreground;
 }
 

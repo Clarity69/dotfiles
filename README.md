@@ -4,7 +4,6 @@ A dynamic, automated desktop environment built on **Hyprland**. This setup utili
 
 ![Arch Linux](https://img.shields.io/badge/OS-Arch%20Linux-blue?style=for-the-badge&logo=arch-linux)
 ![Hyprland](https://img.shields.io/badge/WM-Hyprland-33ccff?style=for-the-badge&logo=hyprland)
-![Theme](https://img.shields.io/badge/Theme-Midnight-blueviolet?style=for-the-badge)
 
 ## Key Features
 - **Dynamic Theming**: All UI colors adapt to your wallpaper using Pywal.
@@ -12,7 +11,9 @@ A dynamic, automated desktop environment built on **Hyprland**. This setup utili
 - **Automated Workflow**: Single script to change wallpapers and update all application themes.
 
 ## Overview
-<img src="assets/newest.png" alt="Alt text">
+<img src="assets/image.png" alt="Alt text">
+<img src="assets/image1.png" alt="Alt text">
+
 
 <video src="https://github.com/Clarity69/dotfiles/raw/main/video/demo_fixed.mp4" controls="controls" style="max-width: 100%;">
 </video>
