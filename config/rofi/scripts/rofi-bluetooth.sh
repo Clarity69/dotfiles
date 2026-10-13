@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # === Config ===
-ROFI_CMD="rofi -dmenu -i -p Bluetooth"
+ROFI_CMD="rofi -dmenu -i -p Bluetooth: -theme ~/.config/rofi/list.rasi"
 BTCTL="bluetoothctl"
 
 # Pastikan bluetooth aktif

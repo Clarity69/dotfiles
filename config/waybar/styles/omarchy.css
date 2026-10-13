@@ -88,6 +88,10 @@ window#waybar {
     font-weight: bold;
     padding: 0 8px;
 }
+#custom-notification {
+    padding-left:10px;
+
+}
 
 /* --- Right-side modules --- */
 #custom-updates,
@@ -181,4 +185,12 @@ tooltip {
 
 tooltip label {
     color: @w_foreground;
+}
+
+#custom-control {
+    padding: 0 12px;
+    margin: 4px 4px;
+    border-radius: 6px;
+    color: @foreground;
+    font-size: 15px;
 }

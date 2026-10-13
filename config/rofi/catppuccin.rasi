@@ -7,6 +7,7 @@
     fg:     @foreground;
     accent: @color4;
     mauve:  @color6;
+    accent: @selected-active-background;
 
     background-color: transparent;
     text-color: @fg;
@@ -15,12 +16,12 @@
 
 window {
     background-color: @bg;
-    border: 2px;             /* Menambahkan border agar aksen warna terlihat */
-    border-color: @accent;   /* Border mengikuti warna wallpaper */
+    border: 1px;             /* Menambahkan border agar aksen warna terlihat */
+    border-color: @fg;   /* Border mengikuti warna wallpaper */
     border-radius: 12px;
     padding: 20px;
-    width: 500px;
-    height: 300px;
+    width: 550px;
+    height: 350px;
     /* Blur biasanya diatur di compositor (Hyprland), bukan di rasi */
 }
 
@@ -30,25 +31,19 @@ mainbox {
 }
 
 inputbar {
-    background-color: rgba(255,255,255,0.0); /* Sedikit transparan */
+    background-color: @bg; /* Sedikit transparan */
     border-radius: 8px;
-    padding: 4px 0px;
+    padding: 4px 2px;
 }
 
 prompt {
-    enabled: false;
-    padding: 8px;
-    text-color: @accent;
-}
-textbox-prompt-colon {
-    enabled: false;
-    str: "";
+    enabled: true;
+    padding: 0px 2px;
+    text-color: @fg;
 }
 
-entry {
-    padding: 10px 14px;
-    border-radius: 8px;
-    text-color: @fg;
+#textbox-prompt-colon {
+    enabled: false;
 }
 
 element {
@@ -69,6 +64,7 @@ element selected {
     /* Menggunakan warna aksen wallpaper dengan sedikit transparansi */
     background-color: @accent; 
     border-radius: 6px;
+    padding: 2px 2px;
 }
 
 element selected element-text {

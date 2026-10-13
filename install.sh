@@ -1,61 +1,89 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Pasang dotfiles ke laptop baru: symlink isi dots.list ke ~/.config dan ~/.local/bin.
+#   ./install.sh           symlink saja (yang lama dibackup dulu)
+#   ./install.sh --deps    install paket dulu, lalu symlink
+#   ./install.sh -n        dry run
 
-# --- Konfigurasi Path ---
-DOT_DIR="$HOME/dotfiles"
-CONFIG_DIR="$HOME/.config"
-BIN_DIR="$HOME/.local/bin"
+set -euo pipefail
+
+DOT_DIR="$(cd "$(dirname "$0")" && pwd)"
 BACKUP_DIR="$HOME/dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
+DRY=0; DEPS=0
+for a in "$@"; do
+    case "$a" in
+        -n) DRY=1 ;;
+        --deps) DEPS=1 ;;
+    esac
+done
 
-echo "Starting...."
+run() { if [ $DRY = 1 ]; then echo "    $*"; else "$@"; fi; }
 
-# 1. Buat folder tujuan jika belum ada
-mkdir -p "$CONFIG_DIR"
-mkdir -p "$BIN_DIR"
+# ── Paket ────────────────────────────────────────────────────────────
+PKGS=(
+    hyprland hyprlock hyprsunset xdg-desktop-portal-hyprland
+    quickshell kitty rofi python-pywal awww
+    networkmanager bluez bluez-utils wireplumber brightnessctl
+    power-profiles-daemon upower cliphist wl-clipboard grim slurp
+    github-cli jq curl ttf-jetbrains-mono-nerd
+)
 
-# 2. Fungsi untuk Backup dan Link
-install_link() {
-    local src=$1
-    local dest=$2
-
-    if [ -e "$dest" ]; then
-        echo "Backup $dest ke $BACKUP_DIR"
-        mkdir -p "$BACKUP_DIR"
-        mv "$dest" "$BACKUP_DIR/"
+if [ $DEPS = 1 ]; then
+    echo "--- Paket"
+    if command -v paru >/dev/null;  then run paru -S --needed "${PKGS[@]}"
+    elif command -v yay >/dev/null; then run yay -S --needed "${PKGS[@]}"
+    else
+        echo "  paru/yay tidak ada; paket AUR (mis. awww) perlu dipasang manual"
+        run sudo pacman -S --needed "${PKGS[@]}" || true
     fi
+fi
 
-    echo "🔗 Link  $src -> $dest"
-    ln -sf "$src" "$dest"
+# ── Symlink ──────────────────────────────────────────────────────────
+live_path() {
+    case "$1" in
+        config/*) echo "$HOME/.config/${1#config/}" ;;
+        bin/*)    echo "$HOME/.local/bin/${1#bin/}" ;;
+    esac
 }
 
-# --- A. Install Konfigurasi (~/.config) ---
-echo -e "\n--- Setting Config (.config) ---"
-folders=("hypr" "waybar" "wal" "kitty" "rofi" "spicetify" "swaync")
-
-for folder in "${folders[@]}"; do
-    if [ -d "$DOT_DIR/config/$folder" ]; then
-        install_link "$DOT_DIR/config/$folder" "$CONFIG_DIR/$folder"
+link() {
+    local src="$1" dest="$2"
+    if [ -L "$dest" ] && [ "$(readlink -f "$dest")" = "$(readlink -f "$src")" ]; then
+        echo "  ok     ${dest/#$HOME/\~}"
+        return
     fi
-done
-
-# Khusus Vencord (hanya tema)
-mkdir -p "$CONFIG_DIR/Vencord/themes"
-install_link "$DOT_DIR/config/Vencord/themes/midnight.theme.css" "$CONFIG_DIR/Vencord/themes/midnight.theme.css"
-
-# --- B. Install Scripts (~/.local/bin) ---
-echo -e "\n--- Setting Scripts (~/.local/bin) ---"
-# Daftar script yang ingin di-link secara spesifik
-scripts=("wallet" "wallset-backend")
-
-for script in "${scripts[@]}"; do
-    if [ -f "$DOT_DIR/bin/$script" ]; then
-        install_link "$DOT_DIR/bin/$script" "$BIN_DIR/$script"
-        chmod +x "$BIN_DIR/$script"
+    if [ -e "$dest" ] || [ -L "$dest" ]; then
+        echo "  backup ${dest/#$HOME/\~}"
+        run mkdir -p "$BACKUP_DIR/$(dirname "${dest#$HOME/}")"
+        run mv "$dest" "$BACKUP_DIR/${dest#$HOME/}"
     fi
-done
+    echo "  link   ${dest/#$HOME/\~}"
+    run mkdir -p "$(dirname "$dest")"
+    run ln -s "$src" "$dest"
+}
 
-# --- C. Finalisasi ---
-echo -e "\n-------------------------------------------------------"
-echo "✅ Done"
-echo "💡 Tips: Jalankan 'wallset-backend [path_gambar]' untuk sinkronisasi warna."
-echo "💡 Info: Backup konfigurasi lamamu ada di $BACKUP_DIR"
-echo "-------------------------------------------------------"
+echo "--- Submodule"
+run git -C "$DOT_DIR" submodule update --init --recursive
+
+echo "--- Config"
+while read -r entry; do
+    entry="${entry%%#*}"; entry="$(echo "$entry" | xargs)"
+    [ -z "$entry" ] && continue
+    [ -e "$DOT_DIR/$entry" ] || continue
+    link "$DOT_DIR/$entry" "$(live_path "$entry")"
+    [[ "$entry" == bin/* ]] && run chmod +x "$DOT_DIR/$entry"
+done < "$DOT_DIR/dots.list"
+
+# My-Shell: symlink ke submodule
+[ -e "$DOT_DIR/config/quickshell/shell/shell.qml" ] && \
+    link "$DOT_DIR/config/quickshell/shell" "$HOME/.config/quickshell/shell"
+
+# Wallpaper bawaan repo, kalau belum punya folder sendiri
+[ -e "$HOME/Pictures/Wallpaper" ] || link "$DOT_DIR/Wallpaper" "$HOME/Pictures/Wallpaper"
+
+# Hyprland butuh file ini ada (ditulis halaman Appearance di Control Center)
+[ -e "$HOME/.config/hypr/quickshell.conf" ] || run touch "$HOME/.config/hypr/quickshell.conf"
+
+echo
+echo "Selesai."
+[ -d "$BACKUP_DIR" ] && echo "Config lama ada di $BACKUP_DIR"
+echo "Pilih wallpaper pertama: wallset-backend ~/Pictures/Wallpaper/<gambar>"

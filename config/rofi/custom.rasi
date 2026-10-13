@@ -1,0 +1,114 @@
+/* 1. Sumber Kebenaran Warna (Pywal) */
+@import "~/.cache/wal/colors-rofi-dark"
+/* 2. Sumber Kebenaran Gambar (Skrip Backend) */
+@import "~/.cache/rofi-image.rasi"
+
+* {
+    bg: @background;
+    fg: @foreground;
+    accent: @color4; 
+    bg-alt: @color1; 
+
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    width: 900px;
+    height: 450px;
+    background-color: @bg;
+    border-radius: 12px;
+}
+
+mainbox {
+    orientation: horizontal;
+    children: [ left-panel, right-panel ];
+}
+
+left-panel {
+    width: 350px;
+    orientation: vertical;
+    padding: 20px;
+    spacing: 15px;
+    children: [ inputbar, dummy, mode-switcher ];
+}
+
+inputbar {
+    background-color: @bg-alt;
+    padding: 12px;
+    border-radius: 8px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @fg;
+    padding: 0 10px 0 0;
+    content: ""; 
+    font: "JetBrainsMono Nerd Font 12";
+}
+
+entry {
+    placeholder: "Search";
+    text-color: @fg;
+    placeholder-color: @fg;
+}
+
+dummy {
+    expand: true;
+    border-radius: 12px;
+}
+
+mode-switcher {
+    spacing: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: @bg-alt;
+    text-color: @fg;
+    border-radius: 8px;
+    horizontal-align: 0.5;
+}
+
+button selected {
+    background-color: @accent;
+    text-color: #ffffff;
+}
+
+right-panel {
+    expand: true;
+    padding: 20px;
+    children: [ listview ];
+}
+
+listview {
+    columns: 1;
+    lines: 6;
+    spacing: 8px;
+    scrollbar: false;
+    layout: vertical;
+}
+
+element {
+    padding: 10px 15px;
+    border-radius: 8px;
+    spacing: 15px;
+}
+
+element-icon {
+    size: 24px;
+}
+
+element-text {
+    vertical-align: 0.5;
+    text-color: @fg;
+}
+
+element selected {
+    background-color: @accent;
+}
+
+element selected element-text {
+    text-color: #ffffff;
+    font-weight: bold;
+}

@@ -1,0 +1,69 @@
+/* ~/.config/rofi/wallpaper.rasi */
+
+/* Kita tetap mengimpor warna Pywal agar temanya sinkron */
+@import "~/.cache/wal/colors-rofi-dark"
+
+* {
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+window {
+    width: 70%;
+    height: 60%;
+    background-color: @background;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+mainbox {
+    /* Kembali ke orientasi vertikal standar: input di atas, grid di bawah */
+    orientation: vertical;
+    children: [ inputbar, listview ];
+    spacing: 15px;
+}
+
+inputbar {
+    background-color: @color1;
+    padding: 10px;
+    border-radius: 8px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    padding: 0 10px 0 0;
+}
+
+listview {
+    /* Kunci arsitektur grid untuk gambar */
+    layout: vertical;
+    columns: 4;
+    lines: 3;
+    spacing: 15px;
+    scrollbar: false;
+}
+
+element {
+    orientation: vertical;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+element-icon {
+    size: 8em; /* Ukuran ikon pratinjau yang besar */
+    horizontal-align: 0.5;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    padding: 10px 0 0 0;
+}
+
+element selected {
+    background-color: @color4;
+}
+
+element selected element-text {
+    text-color: #ffffff;
+}

@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+# wallset - set wallpaper with awww + generate palette with pywal
+# Usage:
+#   wallset /path/to/img.png
+#   wallset --restore
+
+set -euo pipefail
+
+CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}"
+LAST_FILE="$CACHE_DIR/wallset_last"
+IMG="$1"
+
+restore_palette() {
+  # Try restore wal palette; if last image exists, also reapply swww img
+  if [ -f "$LAST_FILE" ]; then
+    last_img=$(<"$LAST_FILE")
+    if [ -f "$last_img" ]; then
+      awww img "$last_img" --transition-type any --transition-duration 1 2>/dev/null || true
+    fi
+  fi
+
+  # wal -R restore colors if cache exists
+  if command -v wal >/dev/null 2>&1; then
+    wal -R || true
+  fi
+}
+
+if [ "${1:-}" = "--restore" ]; then
+  restore_palette
+  exit 0
+fi
+
+# Normal mode: set wallpaper & run wal
+if [ -z "$IMG" ]; then
+  echo "Usage: wallset /path/to/image" >&2
+  exit 2
+fi
+
+if [ ! -f "$IMG" ]; then
+  echo "File not found: $IMG" >&2
+  exit 1
+fi
+
+# Set wallpaper (awww)
+if command -v awww >/dev/null 2>&1; then
+  awww img "$IMG" --transition-type any --transition-duration 1 || true
+else
+  echo "Warning: awww not found, skipping wallpaper set" >&2
+fi
+
+# Generate palette with pywal
+if command -v wal >/dev/null 2>&1; then
+  wal -i "$IMG" --saturate 0.9
+else
+  echo "Warning: wal (pywal) not found, skipping palette generation" >&2
+fi
+
+# Save last used wallpaper path
+mkdir -p "$(dirname "$LAST_FILE")"
+printf '%s' "$IMG" > "$LAST_FILE"
+
+# Restart wofi (jika dipakai) so it reload style
+if pgrep -x wofi >/dev/null 2>&1; then
+  pkill -x wofi || true
+fi
+
+# If you use a terminal that supports wal auto-reload, it will pick up the colors.

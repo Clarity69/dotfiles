@@ -1,0 +1,3 @@
+[submodule "config/quickshell/shell"]
+	path = config/quickshell/shell
+	url = https://github.com/Clarity69/My-Shell

@@ -1,0 +1,81 @@
+{
+    "layer": "top",
+    "position": "left",
+    "width": 50,
+    "spacing": 10,
+    
+
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+
+    "modules-left": [
+        "custom/launcher",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [],
+    "modules-right": [
+        "network",
+        "cpu",
+        "memory",
+        "battery",
+        "clock",
+        "custom/power"
+    ],
+
+    /* --- Definisi Modul --- */
+    "custom/launcher": {
+        "format": "",
+        "on-click": "rofi -show drun",
+        "tooltip": false
+    },
+    
+    "hyprland/workspaces": {
+        /* Gambar target menggunakan angka, bukan ikon titik */
+        "format": "{name}",
+        "on-click": "activate",
+        "sort-by-number": true
+    },
+    
+    "network": {
+        "format-wifi": "󰖩",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰖪",
+        "tooltip-format": "{essid}"
+    },
+
+    "cpu": {
+        /* Menumpuk ikon dan angka persentase agar muat di sidebar */
+        "format": "\n{usage}%",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "\n{percentage}%",
+        "tooltip": false
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        /* Menumpuk ikon dan angka */
+        "format": "{icon}\n{capacity}%",
+        "format-charging": "󰂄\n{capacity}%",
+        "format-plugged": "󰂄\n{capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁾", "󰂀", "󰁹"]
+    },
+
+    "clock": {
+        /* Menumpuk Jam dan Menit. Tanggal disembunyikan di tooltip */
+        "format": "{:%H\n%M}", 
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "wlogout",
+        "tooltip": false
+    }
+}

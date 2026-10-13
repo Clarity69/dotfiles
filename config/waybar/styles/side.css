@@ -1,0 +1,93 @@
+@import "../../.cache/wal/colors-waybar.css";
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    /* Ukuran font diturunkan sedikit agar angka persentase muat */
+    font-size: 14px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+window#waybar {
+    /* Latar belakang solid dari Pywal */
+    background-color: @background;
+    color: @foreground;
+}
+
+/* Modul-modul tidak lagi memiliki background terpisah */
+#custom-launcher,
+#workspaces,
+#network,
+#cpu,
+#memory,
+#battery,
+#clock,
+#custom-power {
+    background-color: transparent;
+    padding: 10px 0;
+    margin: 0;
+}
+
+/* --- Penataan Spesifik --- */
+
+#custom-launcher {
+    color: @color4;
+    /* Warna aksen Pywal */
+    font-size: 18px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+#workspaces {
+    display: flex;
+    flex-direction: column;
+}
+
+#workspaces button {
+    color: @foreground;
+    background: transparent;
+    padding: 5px 0;
+    margin: 2px 0;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    color: @color1;
+}
+
+/* Meniru workspace yang aktif pada gambar referensi */
+#workspaces button.active {
+    color: @color4;
+    /* Warna aksen untuk membedakan workspace aktif */
+    font-weight: bold;
+}
+
+/* Memberikan jarak antar modul di bagian bawah */
+#network,
+#cpu,
+#memory,
+#battery,
+#clock {
+    padding: 8px 0;
+}
+
+/* Tombol Power di ujung bawah */
+#custom-power {
+    color: @color1;
+    /* Warna aksen (biasanya oranye/merah di Pywal) */
+    font-size: 18px;
+    padding-bottom: 15px;
+    padding-top: 10px;
+}
+
+/* Peringatan Baterai */
+#battery.warning {
+    color: @color3;
+}
+
+#battery.critical {
+    color: #ff0000;
+}

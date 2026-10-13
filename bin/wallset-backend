@@ -9,15 +9,22 @@ fi
 IMG="$1"
 
 # 1. Set Wallpaper
-swww img "$IMG" --transition-type center --transition-step 90 --transition-fps 60
+awww img "$IMG" --transition-type center --transition-step 90 --transition-fps 60
 
 # 2. Jalankan Pywal
 wal -i "$IMG" -n -q
 
 # --- VARIABEL PATH ---
 VSCODIUM_CONFIG="$HOME/.config/VSCodium/User/settings.json"
+VSCODIUM_THEME_DIR="$HOME/.vscode-oss/extensions/custom-wal/themes"
 VENCORD_DEST="$HOME/.config/Vencord/themes/midnight.theme.css"
 PYWAL_CACHE_VENCORD="$HOME/.cache/wal/vencord"
+BRAVE_DIR="$HOME/tmp/ChromiumPywal"
+
+#  Update wallpaper di hyprpaper
+    hyprctl hyprpaper unload all
+    hyprctl hyprpaper preload "$SELECTED_WALL"
+    hyprctl hyprpaper wallpaper ",$SELECTED_WALL"
 
 # 3. Refresh Kitty
 if pgrep -x kitty > /dev/null; then
@@ -25,8 +32,8 @@ if pgrep -x kitty > /dev/null; then
 fi
 
 #Refresh UI Lainnya
-(killall waybar && waybar) &
-swaync-client -rs 2>/dev/null
+# (killall waybar && waybar) &
+# swaync-client -rs 2>/dev/null
 
 # 4. Update Vencord (Midnight)
 # Pastikan menggunakan variabel yang benar: PYWAL_CACHE_VENCORD
@@ -37,14 +44,38 @@ else
     echo "❌ Pywal cache 'vencord' not found!"
 fi
 
-# 5. Refresh VSCodium
-if [ -f "$HOME/.cache/wal/vscodium-colors.json" ]; then
-    touch "$VSCODIUM_CONFIG"
-fi
+# hyprlock
+ln -sf $(cat ~/.cache/wal/wal) ~/.cache/current_wallpaper.png
+pkill -USR1 hyprlock
+# if [ -f "$HOME/.cache/wal/colors-vscode.json" ]; then
+#     # Pastikan folder tema ada
+#     mkdir -p "$VSCODIUM_THEME_DIR"
+#     # Copy warna dari cache pywal ke file tema ekstensi
+#     cp "$HOME/.cache/wal/colors-vscode.json" "$VSCODIUM_THEME_DIR/wal.json"
+#     # 'Touch' config agar VSCodium sadar ada perubahan file di ekstensinya
+#     touch "$VSCODIUM_CONFIG"
+#     echo "✅ VSCodium Wal Custom theme updated!"
+# fi
 
 # 6. Spicetify
 if command -v spicetify &> /dev/null; then
-    (spicetify apply -q > /dev/null 2>&1 &)
+    # 'update' is faster than 'apply' and won't force-open Spotify if closed
+    spicetify update -q & 
 fi
+
+# brave/chromium
+if [ -d "$BRAVE_DIR" ]; then
+    cd "$BRAVE_DIR"
+    ./generate-theme.sh
+    
+    # Trik: Kadang Brave butuh file manifest-nya 'disentuh' berkali-kali
+    cp ./Pywal/manifest.json ./Pywal/manifest.json.bak
+    mv ./Pywal/manifest.json.bak ./Pywal/manifest.json
+    
+    cd - > /dev/null
+    echo "✅ Brave theme files updated!"
+fi
+
+echo "dummy { background-image: url(\"$IMG\", both); }" > ~/.cache/rofi-image.rasi
 
 notify-send "Theme Switched" "All apps updated"

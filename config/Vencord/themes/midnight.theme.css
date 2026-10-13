@@ -53,7 +53,7 @@ body {
 
     /* background image options */
     --background-image: on; /* MENGGUNAKAN WALLPAPER PYWAL */
-    --background-image-url: url('/home/taroq/Pictures/Wallpaper/wallhaven-e88x6r_gruvbox-Dark_mode-Light_mode.png'); /* url of the background image */
+    --background-image-url: url('/home/taroq/Pictures/Wallpaper/wallhaven-pomle9.jpg'); /* url of the background image */
 
     /* transparency/blur options */
     /* NOTE: TO USE TRANSPARENCY/BLUR, YOU MUST HAVE TRANSPARENT BG COLORS. FOR EXAMPLE: --bg-4: hsla(220, 15%, 10%, 0.7); */
@@ -76,76 +76,76 @@ body {
     --colors: on; /* off: discord default colors, on: midnight custom colors */
 
     /* text colors */
-    --text-0: #111819; /* text on colored elements */
-    --text-1: #e0daca; /* other normally white text */
-    --text-2: #e0daca; /* headings and important text */
-    --text-3: #e0daca; /* normal text */
-    --text-4: #9c988d; /* icon buttons and channels */
-    --text-5: #9c988d; /* muted channels/chats and timestamps */
+    --text-0: #203034; /* text on colored elements */
+    --text-1: #e1e2e2; /* other normally white text */
+    --text-2: #e1e2e2; /* headings and important text */
+    --text-3: #e1e2e2; /* normal text */
+    --text-4: #9d9e9e; /* icon buttons and channels */
+    --text-5: #9d9e9e; /* muted channels/chats and timestamps */
 
     /* background and dark colors */
-    --bg-1: color-mix(in srgb, #111819, transparent 20%); /* dark buttons when clicked */
-    --bg-2: color-mix(in srgb, #111819, transparent 40%); /* dark buttons */
-    --bg-3: color-mix(in srgb, #111819, transparent 30%); /* spacing, secondary elements */
-    --bg-4: #111819; /* main background color */
-    --hover: color-mix(in srgb, #729B90, transparent 90%); /* channels and buttons when hovered */
-    --active: color-mix(in srgb, #729B90, transparent 80%); /* channels and buttons when clicked or selected */
-    --active-2: color-mix(in srgb, #729B90, transparent 70%); /* extra state for transparent buttons */
-    --message-hover: color-mix(in srgb, #e0daca, transparent 95%); /* messages when hovered */
+    --bg-1: color-mix(in srgb, #203034, transparent 20%); /* dark buttons when clicked */
+    --bg-2: color-mix(in srgb, #203034, transparent 40%); /* dark buttons */
+    --bg-3: color-mix(in srgb, #203034, transparent 30%); /* spacing, secondary elements */
+    --bg-4: #203034; /* main background color */
+    --hover: color-mix(in srgb, #99A1AC, transparent 90%); /* channels and buttons when hovered */
+    --active: color-mix(in srgb, #99A1AC, transparent 80%); /* channels and buttons when clicked or selected */
+    --active-2: color-mix(in srgb, #99A1AC, transparent 70%); /* extra state for transparent buttons */
+    --message-hover: color-mix(in srgb, #e1e2e2, transparent 95%); /* messages when hovered */
 
     /* accent colors */
-    --accent-1: #729B90; /* links and other accent text */
-    --accent-2: #729B90; /* small accent elements */
-    --accent-3: #729B90; /* accent buttons */
-    --accent-4: #478688; /* accent buttons when hovered */
-    --accent-5: #478688; /* accent buttons when clicked */
-    --accent-new: #729B90; /* stuff that's normally red like mute/deafen buttons */
-    --mention: linear-gradient(to right, color-mix(in srgb, #729B90, transparent 90%) 40%, transparent); /* background of messages that mention you */
-    --mention-hover: linear-gradient(to right, color-mix(in srgb, #729B90, transparent 95%) 40%, transparent); /* background of messages that mention you when hovered */
-    --reply: linear-gradient(to right, color-mix(in srgb, #e0daca, transparent 90%) 40%, transparent); /* background of messages that reply to you */
-    --reply-hover: linear-gradient(to right, color-mix(in srgb, #e0daca, transparent 95%) 40%, transparent); /* background of messages that reply to you when hovered */
+    --accent-1: #99A1AC; /* links and other accent text */
+    --accent-2: #99A1AC; /* small accent elements */
+    --accent-3: #99A1AC; /* accent buttons */
+    --accent-4: #879AAF; /* accent buttons when hovered */
+    --accent-5: #879AAF; /* accent buttons when clicked */
+    --accent-new: #99A1AC; /* stuff that's normally red like mute/deafen buttons */
+    --mention: linear-gradient(to right, color-mix(in srgb, #99A1AC, transparent 90%) 40%, transparent); /* background of messages that mention you */
+    --mention-hover: linear-gradient(to right, color-mix(in srgb, #99A1AC, transparent 95%) 40%, transparent); /* background of messages that mention you when hovered */
+    --reply: linear-gradient(to right, color-mix(in srgb, #e1e2e2, transparent 90%) 40%, transparent); /* background of messages that reply to you */
+    --reply-hover: linear-gradient(to right, color-mix(in srgb, #e1e2e2, transparent 95%) 40%, transparent); /* background of messages that reply to you when hovered */
 
     /* status indicator colors */
-    --online: #3D8186; /* change to #40a258 for default */
-    --dnd: #317B83; /* change to #d83a41 for default */
-    --idle: #478688; /* change to #cc954c for default */
-    --streaming: #85A597; /* change to ##9147ff for default */
-    --offline: #9c988d; /* change to #82838b for default offline color */
+    --online: #768DC3; /* change to #40a258 for default */
+    --dnd: #7A91A9; /* change to #d83a41 for default */
+    --idle: #879AAF; /* change to #cc954c for default */
+    --streaming: #A6B2C6; /* change to ##9147ff for default */
+    --offline: #9d9e9e; /* change to #82838b for default offline color */
 
     /* border colors */
     --border-light: var(--hover); /* general light border color */
     --border: var(--active); /* general normal border color */
     --border-hover: var(--active); /* border color of panels when hovered */
-    --button-border: color-mix(in srgb, #e0daca, transparent 90%); /* neutral border color of buttons */
+    --button-border: color-mix(in srgb, #e1e2e2, transparent 90%); /* neutral border color of buttons */
 
     /* base colors */
-    --red-1: #317B83;
-    --red-2: #317B83;
-    --red-3: #317B83;
-    --red-4: #317B83;
-    --red-5: #317B83;
+    --red-1: #7A91A9;
+    --red-2: #7A91A9;
+    --red-3: #7A91A9;
+    --red-4: #7A91A9;
+    --red-5: #7A91A9;
 
-    --green-1: #3D8186;
-    --green-2: #3D8186;
-    --green-3: #3D8186;
-    --green-4: #3D8186;
-    --green-5: #3D8186;
+    --green-1: #768DC3;
+    --green-2: #768DC3;
+    --green-3: #768DC3;
+    --green-4: #768DC3;
+    --green-5: #768DC3;
 
-    --blue-1: #729B90;
-    --blue-2: #729B90;
-    --blue-3: #729B90;
-    --blue-4: #729B90;
-    --blue-5: #729B90;
+    --blue-1: #99A1AC;
+    --blue-2: #99A1AC;
+    --blue-3: #99A1AC;
+    --blue-4: #99A1AC;
+    --blue-5: #99A1AC;
 
-    --yellow-1: #478688;
-    --yellow-2: #478688;
-    --yellow-3: #478688;
-    --yellow-4: #478688;
-    --yellow-5: #478688;
+    --yellow-1: #879AAF;
+    --yellow-2: #879AAF;
+    --yellow-3: #879AAF;
+    --yellow-4: #879AAF;
+    --yellow-5: #879AAF;
 
-    --purple-1: #85A597;
-    --purple-2: #85A597;
-    --purple-3: #85A597;
-    --purple-4: #85A597;
-    --purple-5: #85A597;
+    --purple-1: #A6B2C6;
+    --purple-2: #A6B2C6;
+    --purple-3: #A6B2C6;
+    --purple-4: #A6B2C6;
+    --purple-5: #A6B2C6;
 }

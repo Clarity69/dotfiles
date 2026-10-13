@@ -1,0 +1,21 @@
+# Daftar yang di-track. Satu baris = satu folder/file.
+#   config/<x>  <->  ~/.config/<x>
+#   bin/<x>     <->  ~/.local/bin/<x>
+# Yang tidak ada di laptop dilewati saja, jadi aman ditambah.
+
+config/hypr
+config/kitty
+config/rofi
+config/wal
+config/waybar
+config/spicetify
+config/Vencord/themes
+config/quickshell/hyprquickpaper
+config/fastfetch
+config/cava
+config/btop
+
+bin/wallset
+bin/wallset-backend
+
+# config/quickshell/shell = submodule ke repo My-Shell, diurus terpisah oleh sync.sh

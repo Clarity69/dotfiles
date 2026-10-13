@@ -1,0 +1,8 @@
+*.bak
+*.log
+*.tmp
+backup/
+Backup/
+__pycache__/
+node_modules/
+.cache/

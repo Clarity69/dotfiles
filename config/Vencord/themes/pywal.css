@@ -1,0 +1,45 @@
+/**
+ * @name Pywal-Ultra
+ * @author Pywal
+ * @version 2.0.0
+ */
+
+:root {
+    --brand-experiment: #EE082D !important;
+    --background-primary: #0B060B !important;
+    --background-secondary: #0B060B !important;
+    --background-tertiary: #0B060B !important;
+    --background-secondary-alt: #0B060B !important;
+    --background-floating: #0B060B !important;
+    --text-normal: #de9cac !important;
+    --interactive-normal: #de9cac !important;
+}
+
+/* MEMAKSA SEMUA BACKGROUND JADI TRANSPARAN/WARNA PYWAL */
+.app_bd26cc, 
+.bg_d4b370,
+.wrapper_fea3ef, /* Server list */
+.sidebar_a4d4d9, /* Channel list */
+.container_ee697b, /* Channel list container */
+.chat_a7d72e,    /* Chat base */
+.container_ed711d, /* Chat container */
+.members_cbd271,  /* Member list */
+.container_c273bf, /* Member list container */
+.container_adcaac, /* Search bar */
+.panels_a4d4d9,   /* User panel (mic/video) */
+.container_b2ca13, /* Top bar */
+.nowPlayingColumn_c273bf { /* Active section */
+    background-color: #0B060B !important;
+    background: #0B060B !important;
+}
+
+/* Menghapus bayangan dan garis yang mengganggu */
+.searchBar_f0963d {
+    box-shadow: none !important;
+    background-color: #0B060B !important;
+}
+
+/* Membuat tampilan lebih menyatu */
+body {
+    background-color: #0B060B !important;
+}

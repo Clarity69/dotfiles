@@ -1,10 +1,16 @@
 configuration {
-    modi: "drun,run";
-    show-icons: false;
-    icon-theme: "Papirus";
+    /* Mengaktifkan mode yang terlihat di gambar */
+    modi: "drun,run,filebrowser,window";
+    show-icons: true;
+    
+    /* Memanipulasi teks tombol mode-switcher agar sesuai target */
+    display-drun: "Apps";
+    display-run: "Run";
+    display-filebrowser: "Files";
+    display-window: "Window";
+    
     drun-display-format: "{name}";
     font: "JetBrainsMono Nerd Font 12";
-    display-drun: "";
 }
 
-@theme "catppuccin"
+@theme "custom"

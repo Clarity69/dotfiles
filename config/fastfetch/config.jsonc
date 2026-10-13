@@ -1,0 +1,73 @@
+{
+    "logo": {
+        "source": "$HOME/.config/fastfetch/cat.txt",
+        "color": {
+            "1": "white"
+        }
+    },
+    "display": {
+        "separator": " "
+    },
+    "modules": [
+        {
+            "key": "╭───────────╮",
+            "type": "custom"
+        },
+        {
+            "key": "│ {#35} user    {#keys}│",
+            "type": "title",
+            "format": "{user-name}"
+        },
+        {
+            "key": "│ {#31}󰅐 uptime  {#keys}│",
+            "type": "uptime"
+        },
+        {
+            "key": "│ {#36}{icon} distro  {#keys}│",
+            "type": "os",
+            "format": "{id} {version}"
+        },
+        {
+            "key": "│ {#33} wm      {#keys}│",
+            "type": "wm",
+            "format": "{pretty-name}"
+        },
+        {
+            "key": "│ {#35} term    {#keys}│",
+            "type": "terminal",
+            "format": "{pretty-name}"
+        },
+        {
+            "key": "│ {#31} shell   {#keys}│",
+            "type": "shell",
+            "format": "{pretty-name}"
+        },
+        {
+            "key": "│ {#36}󰏖 apps    {#keys}│",
+            "type": "packages"
+        },
+        {
+            "key": "│ {#33}󰉉 memory  {#keys}│",
+            "type": "memory",
+            "format": "{used} / {total}"
+        },
+        {
+            "key": "│ {#35}󰓡 swap    {#keys}│",
+            "type": "swap",
+            "format": "{used} / {total}"
+        },
+        {
+            "key": "├───────────┤",
+            "type": "custom"
+        },
+        {
+            "key": "│ {#39} colors  {#keys}│",
+            "type": "colors",
+            "symbol": "circle"
+        },
+        {
+            "key": "╰───────────╯",
+            "type": "custom"
+        }
+    ]
+}
