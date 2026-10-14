@@ -24,7 +24,7 @@ PKGS=(
     quickshell kitty rofi python-pywal awww
     networkmanager bluez bluez-utils wireplumber brightnessctl
     power-profiles-daemon upower cliphist wl-clipboard grim slurp
-    github-cli jq curl ttf-jetbrains-mono-nerd
+    playerctl wlogout nautilus github-cli jq curl ttf-jetbrains-mono-nerd
 )
 
 if [ $DEPS = 1 ]; then

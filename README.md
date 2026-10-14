@@ -12,8 +12,6 @@ The shell (bar, control center, notifications, overview, desktop widgets) is my 
 <img src="assets/image.png" alt="desktop">
 <img src="assets/image1.png" alt="desktop">
 
-A short demo is in [video/demo_fixed.mp4](video/demo_fixed.mp4).
-
 ## What's in here
 
 | | |
@@ -67,15 +65,47 @@ git add -A && git commit -m "sync" && git push
 To track something new, add a line to `dots.list` (for example `config/fastfetch`) and run `sync.sh`.
 
 ## Keybinds
-
+ 
+`SUPER` is the main key.
+ 
 | Keys | Does |
 | :--- | :--- |
-| `SUPER + A` | Control center |
-| `SUPER + N` | Notification center |
-| `SUPER + V` | Clipboard history |
+| `SUPER + Q` | Terminal (kitty) |
+| `SUPER + R` | App launcher (rofi) |
+| `SUPER + E` | File manager (nautilus) |
+| `SUPER + C` | Close window |
+| `SUPER + M` | Lock screen (hyprlock) |
+| `SUPER + Escape` | Power menu (wlogout) |
+| `SUPER + ALT + V` | Toggle floating |
+| `SUPER + P` | Pseudo tile |
+| `SUPER + J` | Toggle split |
+| `SUPER + arrows` | Move focus |
+| `SUPER + 1-0` | Switch workspace |
+| `SUPER + SHIFT + 1-0` | Move window to workspace |
+| `SUPER + scroll` | Cycle workspaces |
+| `SUPER + S` | Scratchpad |
+| `SUPER + SHIFT + S` | Send window to scratchpad |
+| `SUPER + LMB / RMB drag` | Move / resize window |
+ 
+Shell and theming:
+ 
+| Keys | Does |
+| :--- | :--- |
 | `SUPER + TAB` | Workspace overview |
-| `SUPER + K` | Wallpaper picker |
+| `SUPER + V` | Clipboard history (opens in the control center) |
+| `SUPER + K` | Wallpaper picker (hyprquickpaper) |
+| `SUPER + ALT + B` | Switch bar layout |
 | `SUPER + W` | Wi-Fi menu (rofi) |
 | `SUPER + B` | Bluetooth menu (rofi) |
+| `SUPER + L` | Launch Waybar (old bar) |
+ 
+Screenshots land in `~/Pictures/ss` and get copied to the clipboard:
+ 
+| Keys | Does |
+| :--- | :--- |
+| `Print` | Select an area |
+| `SUPER + Print` | Whole screen |
+ 
+Volume, mic, brightness and media keys work as you'd expect (wpctl, brightnessctl, playerctl).
 
 The rest are in `config/hypr/keybinds.conf`.
