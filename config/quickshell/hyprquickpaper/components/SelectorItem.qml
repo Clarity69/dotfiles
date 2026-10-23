@@ -82,7 +82,7 @@ Item {
 
         color: "transparent"
 
-        border.width: 3
+        border.width: 2
         border.color: root.colors.border_color
 
         transform: Shear {
