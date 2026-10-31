@@ -1,3 +1,4 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export MCP_TIMEOUT:60000
 SETUVAR fish_user_paths:/home/kin/\x2elocal/bin
