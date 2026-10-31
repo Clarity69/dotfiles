@@ -19,3 +19,5 @@ bin/wallset
 bin/wallset-backend
 
 # config/quickshell/shell = submodule ke repo My-Shell, diurus terpisah oleh sync.sh
+config/fish
+config/ohmyposh
